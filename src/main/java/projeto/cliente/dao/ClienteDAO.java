@@ -24,11 +24,13 @@ public class ClienteDAO {
         if (!Objects.isNull(clienteUpdate)) {
             Update update = new Update();
             update.set("name", cliente.getName());
-            update.set("age", cliente.getAge());
+            update.set("endereco", cliente.getEndereco());
+            update.set("numero", cliente.getNumero());
+            update.set("email", cliente.getEmail());
 
             mongoOperation.updateFirst(query, update, Cliente.class);
-            return "Update successfully.";
+            return "Cliente atualizado com sucesso.";
         }
-        return "It was not possible to update, please contact the administration.";
+        return "Não foi possível efetuar a atualização, favor entre em contato com o administrador.";
     }
 }

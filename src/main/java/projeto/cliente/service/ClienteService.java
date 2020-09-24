@@ -42,7 +42,7 @@ public class ClienteService {
     public String create(Cliente cliente) {
         cliente.setId(serviceId.generateSequence(Cliente.SEQUENCE_NAME));
         this.repository.save(cliente);
-        return "Cliente successfully included.";
+        return "Cliente incluído com sucesso.";
     }
 
     public String updateAge(Long id, Cliente cliente) {
@@ -51,14 +51,6 @@ public class ClienteService {
 
     public void delete(Long id) {
         this.repository.deleteById(id);
-    }
-
-    private Cliente buildCliente(String[] line) {
-        Cliente cliente = new Cliente();
-        cliente.setId(serviceId.generateSequence(Cliente.SEQUENCE_NAME));
-        cliente.setName(line[0]);
-        cliente.setAge(Integer.parseInt(line[1]));
-        return cliente;
     }
 
 }

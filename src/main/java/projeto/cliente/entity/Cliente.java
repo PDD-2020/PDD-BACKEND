@@ -23,11 +23,16 @@ public class Cliente {
     @Id
     private long id;
 
-    @NotBlank(message = "name is required")
+    @NotBlank(message = "Nome é obrigatório")
     private String name;
 
-    @NotNull(message = "name is required")
-    private int age;
+    @NotBlank(message = "Endereço é obrigatório")
+    private String endereco;
+
+    @NotBlank(message = "Número é obrigatório")
+    private String numero;
+
+    private String email;
 
     public Cliente() {
 
