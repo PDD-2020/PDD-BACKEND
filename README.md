@@ -9,11 +9,6 @@ Online Championships Management API Project
             - Add player
             - Update player
             - Delete player
-            - Archive to create player
-            
-        Team:
-            - Get Team
-            - Add Team
 
 ## Create mongoDB environment    
     
