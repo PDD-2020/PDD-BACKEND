@@ -5,10 +5,10 @@ Online Championships Management API Project
 
     Contains the apis below
         Player:
-            - Get player
-            - Add player
-            - Update player
-            - Delete player
+            - Get cliente
+            - Add cliente
+            - Update cliente
+            - Delete cliente
 
 ## Create mongoDB environment    
     

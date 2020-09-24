@@ -6,21 +6,19 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data
 @Getter
 @Setter
-@NotNull(message = "player is required")
-@Document(collection = "player")
-public class Player {
+@NotNull(message = "cliente is required")
+@Document(collection = "cliente")
+public class Cliente {
 
     @Transient
-    public static final String SEQUENCE_NAME = "player_sequence";
+    public static final String SEQUENCE_NAME = "cliente_sequence";
 
     @Id
     private long id;
@@ -31,7 +29,7 @@ public class Player {
     @NotNull(message = "name is required")
     private int age;
 
-    public Player() {
+    public Cliente() {
 
     }
 }

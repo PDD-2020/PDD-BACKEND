@@ -6,27 +6,27 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
-import projeto.cliente.entity.Player;
+import projeto.cliente.entity.Cliente;
 
 import java.util.Objects;
 
 @Component
 @RequiredArgsConstructor
-public class PlayerDAO {
+public class ClienteDAO {
 
     private final MongoOperations mongoOperation;
 
-    public String updatePlayer(Long id, Player player) {
+    public String updateCliente(Long id, Cliente cliente) {
         Query query = new Query();
         query.addCriteria(Criteria.where("id").is(id));
 
-        Player playerUpdate = mongoOperation.findOne(query, Player.class);
-        if (!Objects.isNull(playerUpdate)) {
+        Cliente clienteUpdate = mongoOperation.findOne(query, Cliente.class);
+        if (!Objects.isNull(clienteUpdate)) {
             Update update = new Update();
-            update.set("name", player.getName());
-            update.set("age", player.getAge());
+            update.set("name", cliente.getName());
+            update.set("age", cliente.getAge());
 
-            mongoOperation.updateFirst(query, update, Player.class);
+            mongoOperation.updateFirst(query, update, Cliente.class);
             return "Update successfully.";
         }
         return "It was not possible to update, please contact the administration.";
