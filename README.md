@@ -1,7 +1,7 @@
 # Archive
 
 # About 
-Online Championships Management API Project
+Restaurant Management API Project
 
     Contains the apis below
         Player:
