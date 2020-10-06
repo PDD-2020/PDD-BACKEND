@@ -28,4 +28,9 @@ public class InsumoService {
 
     }
 
+    public void delete(String id){
+        findById(id);
+        insumoRepository.deleteById(id);
+    }
+
 }

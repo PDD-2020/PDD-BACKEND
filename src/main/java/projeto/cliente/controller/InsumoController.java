@@ -36,5 +36,13 @@ public class InsumoController {
     }
 
 
+    @DeleteMapping(value ="/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Void> delete(@PathVariable String id){
+        insumoService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 
 }
