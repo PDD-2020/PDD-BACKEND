@@ -7,6 +7,7 @@ import projeto.cliente.entity.Insumo;
 import projeto.cliente.service.InsumoService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/insumo")
@@ -15,6 +16,11 @@ public class InsumoController {
 
     @Autowired
     InsumoService insumoService;
+
+    @GetMapping
+    public List<Insumo> findAll(){
+        return insumoService.findAll();
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

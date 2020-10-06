@@ -14,8 +14,8 @@ public class InsumoService {
     @Autowired
     InsumoRepository insumoRepository;
 
-    public Insumo insert(Insumo objInsumo){
-        return insumoRepository.insert(objInsumo);
+    public List<Insumo> findAll(){
+        return insumoRepository.findAll();
     }
 
     public String create(Insumo insumo) {
