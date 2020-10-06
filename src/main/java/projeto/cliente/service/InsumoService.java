@@ -33,4 +33,14 @@ public class InsumoService {
         insumoRepository.deleteById(id);
     }
 
+    public Insumo update(Insumo insumo){
+        Insumo updatedInsumo = findById(insumo.getId());
+        updateData(updatedInsumo, insumo);
+        return insumoRepository.save(updatedInsumo);
+    }
+
+    private void updateData(Insumo updatedUser, Insumo insumo) {
+        updatedUser.setTipoEmbalagem(insumo.getTipoEmbalagem());
+    }
+
 }

@@ -43,6 +43,13 @@ public class InsumoController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping(value ="/{id}")
+    public ResponseEntity<Void> update(@RequestBody Insumo insumo, @PathVariable String id){
+        insumo.setId(id);
+        insumo = insumoService.update(insumo);
+        return ResponseEntity.noContent().build();
+    }
+
 
 
 }
