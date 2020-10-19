@@ -1,6 +1,5 @@
 package projeto.cliente.entity;
 
-import jdk.nashorn.internal.runtime.regexp.joni.ast.StringNode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
