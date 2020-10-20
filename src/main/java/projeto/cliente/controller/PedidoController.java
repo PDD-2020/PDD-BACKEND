@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import projeto.cliente.entity.Insumo;
 import projeto.cliente.entity.Pedido;
 import projeto.cliente.service.PedidoService;
 
@@ -43,5 +44,12 @@ public class PedidoController {
         pedidoService.delete(id);
         return ResponseEntity.noContent().build();
     }
+    @PutMapping(value ="/{id}")
+    public ResponseEntity<Void> update(@RequestBody Pedido pedido, @PathVariable String id){
+        pedido.setId(id);
+        pedido = pedidoService.update(pedido);
+        return ResponseEntity.noContent().build();
+    }
+
 
 }
