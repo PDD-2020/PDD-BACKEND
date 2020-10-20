@@ -3,6 +3,7 @@ package projeto.cliente.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projeto.cliente.entity.Pedido;
+import projeto.cliente.exception.ObjectNotFoundException;
 import projeto.cliente.repository.PedidoRepository;
 
 import java.util.List;
@@ -15,6 +16,10 @@ public class PedidoService {
 
     public List<Pedido> findAll(){
         return pedidoRepository.findAll();
+    }
+
+    public Pedido findById(String id) {
+        return pedidoRepository.findById(id).orElseThrow(()-> new ObjectNotFoundException("Pedido não encontrado"));
     }
 
     public Pedido insert(Pedido pedido){

@@ -29,4 +29,10 @@ public class PedidoController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(objPedido.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
+
+    @GetMapping(value ="/{id}")
+    public ResponseEntity<Pedido> findById(@PathVariable String id){
+        Pedido pedido = pedidoService.findById(id);
+        return ResponseEntity.ok().body(pedido);
+    }
 }
