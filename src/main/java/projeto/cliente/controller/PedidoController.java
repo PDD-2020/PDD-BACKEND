@@ -1,6 +1,7 @@
 package projeto.cliente.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -35,4 +36,12 @@ public class PedidoController {
         Pedido pedido = pedidoService.findById(id);
         return ResponseEntity.ok().body(pedido);
     }
+
+    @DeleteMapping(value ="/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Void> delete(@PathVariable String id){
+        pedidoService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

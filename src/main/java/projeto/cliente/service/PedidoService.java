@@ -26,4 +26,9 @@ public class PedidoService {
         return pedidoRepository.insert(pedido);
     }
 
+    public void delete(String id){
+        findById(id);
+        pedidoRepository.deleteById(id);
+    }
+
 }
