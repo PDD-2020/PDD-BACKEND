@@ -31,4 +31,15 @@ public class PedidoService {
         pedidoRepository.deleteById(id);
     }
 
+    public Pedido update(Pedido pedido){
+        Pedido updatedPedido = findById(pedido.getId());
+        updateData(updatedPedido, pedido);
+        return pedidoRepository.save(updatedPedido);
+    }
+
+    private void updateData(Pedido updatedPedido, Pedido pedido) {
+        updatedPedido.setCliente(pedido.getCliente());
+        updatedPedido.setInsumo(pedido.getInsumo());
+        updatedPedido.setProdutos(pedido.getProdutos());
+    }
 }
