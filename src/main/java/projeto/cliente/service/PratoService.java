@@ -35,7 +35,8 @@ public class PratoService {
 
     public String create(Prato prato, MultipartFile imagem){
         prato.setId(serviceId.generateSequence(Prato.SEQUENCE_NAME));
-        this.repository.save(prato, imagem);
+        prato.setImagem(imagem);
+        this.repository.save(prato);
         return "Prato salvo com sucesso";
     }
 

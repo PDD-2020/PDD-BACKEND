@@ -10,6 +10,4 @@ import java.util.List;
 public interface PratoRepository extends MongoRepository<Prato, Long> {
 
     List<Prato> findAll();
-
-    void save(Prato prato, MultipartFile imagem);
 }
