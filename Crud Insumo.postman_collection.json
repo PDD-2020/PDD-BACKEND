@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "ab752cdc-d77a-4b2c-a06a-da17c6036093",
+		"name": "Crud Insumo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Insumo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/insumo",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"insumo"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "5f7cb5ad5a578c2a1112ac70",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Insumo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"tipoEmbalagem\":\"Microondas\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/insumo",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"insumo"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Insumo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/insumo/5f7cb5c05a578c2a1112ac71",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"insumo",
+						"5f7cb5c05a578c2a1112ac71"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Insumo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"tipoEmbalagem\":\"Microondas\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/insumo/5f7cd9e6ac503662f7f8e005",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"insumo",
+						"5f7cd9e6ac503662f7f8e005"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
