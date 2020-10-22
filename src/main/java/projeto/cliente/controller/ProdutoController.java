@@ -1,10 +1,10 @@
 package projeto.cliente.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import projeto.cliente.entity.Pedido;
 import projeto.cliente.entity.Produto;
 import projeto.cliente.service.ProdutoService;
 
@@ -34,5 +34,12 @@ public class ProdutoController {
         Produto objProduto = produtoService.insert(produto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(objProduto.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @DeleteMapping(value ="/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Void> delete(@PathVariable String id){
+        produtoService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
