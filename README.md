@@ -4,7 +4,7 @@
 Restaurant Management API Project
 
     Contains the apis below
-        Player:
+        Cliente:
             - Get cliente
             - Add cliente
             - Update cliente
