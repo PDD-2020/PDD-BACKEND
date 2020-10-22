@@ -2,13 +2,13 @@ package projeto.cliente.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import projeto.cliente.entity.Pedido;
 import projeto.cliente.entity.Produto;
 import projeto.cliente.service.ProdutoService;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -27,5 +27,12 @@ public class ProdutoController {
     public ResponseEntity<Produto> findById(@PathVariable String id){
         Produto produto = produtoService.findById(id);
         return ResponseEntity.ok().body(produto);
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> insert(@RequestBody Produto produto){
+        Produto objProduto = produtoService.insert(produto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(objProduto.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 }

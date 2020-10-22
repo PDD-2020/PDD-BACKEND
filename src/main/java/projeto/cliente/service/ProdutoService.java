@@ -22,4 +22,8 @@ public class ProdutoService {
         return produtoRepository.findById(id).orElseThrow(()-> new ObjectNotFoundException("Produto não encontrado"));
     }
 
+    public Produto insert(Produto produto){
+        return produtoRepository.save(produto);
+    }
+
 }
