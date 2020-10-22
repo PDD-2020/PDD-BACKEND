@@ -31,4 +31,16 @@ public class ProdutoService {
         produtoRepository.deleteById(id);
     }
 
+    public Produto update(Produto produto){
+        Produto updatedProduto = findById(produto.getId());
+        updateData(updatedProduto, produto);
+        return produtoRepository.save(updatedProduto);
+    }
+
+    private void updateData(Produto updatedProduto, Produto produto) {
+        updatedProduto.setNome(produto.getNome());
+        updatedProduto.setValor(updatedProduto.getValor());
+        updatedProduto.setDescricao(produto.getDescricao());
+    }
+
 }
