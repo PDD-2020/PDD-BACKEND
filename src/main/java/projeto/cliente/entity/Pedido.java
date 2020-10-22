@@ -22,6 +22,5 @@ public class Pedido implements Serializable {
     private String id;
     private Cliente cliente;
     private Insumo insumo;
-    @DBRef
     private List<Produto> produtos = new ArrayList<>();
 }

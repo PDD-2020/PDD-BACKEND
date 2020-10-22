@@ -23,7 +23,7 @@ public class PedidoService {
     }
 
     public Pedido insert(Pedido pedido){
-        return pedidoRepository.insert(pedido);
+        return pedidoRepository.save(pedido);
     }
 
     public void delete(String id){
