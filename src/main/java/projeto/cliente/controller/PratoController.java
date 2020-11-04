@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/prato")
+@CrossOrigin
 public class PratoController {
 
     private final PratoService service;
