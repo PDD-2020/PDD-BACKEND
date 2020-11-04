@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/pedidos")
-
+@CrossOrigin
 public class PedidoController {
 
     @Autowired
