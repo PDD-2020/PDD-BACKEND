@@ -18,7 +18,11 @@ public class Produto implements Serializable {
     private String nome;
     private Double valor;
     private String descricao;
+<<<<<<< HEAD
     private MultipartFile foto;
+=======
+    private String urlFoto;
+>>>>>>> develop
 
     public Produto(){}
 
