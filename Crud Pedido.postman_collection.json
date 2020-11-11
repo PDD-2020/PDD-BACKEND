@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "1e6462b6-e491-4437-bd27-fc43cabe4db4",
+		"name": "Crud Pedido",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Pedidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pedidos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pedidos by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pedidos/5f91042d61131500d89df3c3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos",
+						"5f91042d61131500d89df3c3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Pedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cliente\":{\n        \"id\":7\n    },\n    \"insumo\":{\n        \"id\":\"5f7cb5ad5a578c2a1112ac70\"\n    },\n    \"produtos\":[\n        {\n            \"id\":\"5f9103bc61131500d89df3c2\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pedidos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Pedido",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cliente\":{\n        \"id\":8\n    },\n    \"insumo\":{\n        \"id\":\"5f7cd9e6ac503662f7f8e005\"\n    },\n    \"produtos\":[\n        {\n            \"id\":\"5f9103bc61131500d89df3c2\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pedidos/5f9106dc61131500d89df3c4",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos",
+						"5f9106dc61131500d89df3c4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Pedido",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pedidos/5f91042d61131500d89df3c3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos",
+						"5f91042d61131500d89df3c3"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
