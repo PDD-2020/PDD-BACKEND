@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import java.io.Serializable;
 
 @Data
@@ -18,8 +19,10 @@ public class Produto implements Serializable {
     private String nome;
     private Double valor;
     private String descricao;
-    private String urlFoto;
+    private MultipartFile foto;
 
     public Produto(){}
 
 }
+
+
