@@ -19,7 +19,7 @@ public class Produto implements Serializable {
     private String nome;
     private Double valor;
     private String descricao;
-    private MultipartFile foto;
+    private Number tipo;
 
     public Produto(){}
 
