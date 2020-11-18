@@ -20,7 +20,6 @@ public class Produto implements Serializable {
     private Double valor;
     private String descricao;
     private Number tipo;
-    private MultipartFile foto;
     private String urlFoto;
 
     public Produto(){}
