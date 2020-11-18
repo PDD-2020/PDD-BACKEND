@@ -28,4 +28,5 @@ public class Pedido implements Serializable {
     private Insumo insumo;
     @DBRef
     private List<Produto> produtos = new ArrayList<>();
+    private Boolean fidelidade;
 }
