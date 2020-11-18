@@ -41,7 +41,12 @@ public class ProdutoService {
         updatedProduto.setNome(produto.getNome());
         updatedProduto.setValor(updatedProduto.getValor());
         updatedProduto.setDescricao(produto.getDescricao());
+<<<<<<< HEAD
         //updatedProduto.setUrlFoto(produto.getUrlFoto());
+=======
+        updatedProduto.setUrlFoto(produto.getUrlFoto());
+        updatedProduto.setTipo(produto.getTipo());
+>>>>>>> develop
     }
 
 }
