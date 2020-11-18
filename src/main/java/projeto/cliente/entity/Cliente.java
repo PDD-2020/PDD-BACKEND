@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 @Getter
@@ -33,6 +34,8 @@ public class Cliente {
     private String numero;
 
     private String email;
+
+    private List<Pedido> pedidos;
 
     public Cliente() {
 

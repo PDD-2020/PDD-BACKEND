@@ -1,11 +1,15 @@
 package projeto.cliente.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
+import projeto.cliente.entity.Cliente;
 import projeto.cliente.entity.Pedido;
 import projeto.cliente.exception.ObjectNotFoundException;
 import projeto.cliente.repository.PedidoRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service

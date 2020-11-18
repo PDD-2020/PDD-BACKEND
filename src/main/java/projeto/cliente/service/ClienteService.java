@@ -6,11 +6,14 @@ import lombok.Setter;
 import org.springframework.stereotype.Service;
 import projeto.cliente.dao.ClienteDAO;
 import projeto.cliente.entity.Cliente;
+import projeto.cliente.entity.Pedido;
 import projeto.cliente.repository.ClienteRepository;
+import projeto.cliente.repository.PedidoRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +26,7 @@ public class ClienteService {
     private final ClienteRepository repository;
     private final ClienteDAO clienteDAO;
     private final SequenceGeneratorService serviceId;
+    private final PedidoRepository pedidoRepository;
 
 
     public List<Cliente> get(Long id) {
@@ -53,4 +57,11 @@ public class ClienteService {
         this.repository.deleteById(id);
     }
 
+    public String addPedido(String idPedido, String idCliente){
+        Optional<Pedido> pedido = this.pedidoRepository.findById(idPedido);
+        if(!pedido.isPresent()){
+            return "O pedido informado não existe.";
+        }
+        return this.clienteDAO.addPedido(idCliente, pedido.get());
+    }
 }

@@ -1,5 +1,6 @@
 package projeto.cliente.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import projeto.cliente.entity.Cliente;
@@ -11,13 +12,10 @@ import java.util.List;
 @RestController()
 @RequestMapping("/cliente")
 @CrossOrigin
+@AllArgsConstructor
 public class ClienteController {
 
     private final ClienteService service;
-
-    public ClienteController(ClienteService service) {
-        this.service = service;
-    }
 
     @GetMapping
     public List<Cliente> get(@RequestParam(required = false) Long id) {
@@ -40,5 +38,11 @@ public class ClienteController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void delete(@PathVariable Long id) {
         this.service.delete(id);
+    }
+
+    @PostMapping(path = "/addPedido/{idPedido}/{idCliente}")
+    public String addPedido(@PathVariable("idPedido") String idPedido,
+                            @PathVariable("idCliente") String idCliente) {
+        return this.service.addPedido(idPedido, idCliente);
     }
 }
