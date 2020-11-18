@@ -22,7 +22,7 @@ public class Pedido implements Serializable {
 
     @Id
     private String id;
-    @DBRef
+    @DBRef()
     private Cliente cliente;
     @DBRef
     private Insumo insumo;

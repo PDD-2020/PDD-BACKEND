@@ -1,9 +1,13 @@
 package projeto.cliente.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
+import projeto.cliente.entity.Cliente;
 import projeto.cliente.entity.Pedido;
 import projeto.cliente.exception.ObjectNotFoundException;
+import projeto.cliente.repository.ClienteRepository;
 import projeto.cliente.repository.PedidoRepository;
 
 import java.util.List;
@@ -12,7 +16,7 @@ import java.util.List;
 public class PedidoService {
 
     @Autowired
-    PedidoRepository pedidoRepository;
+    private PedidoRepository pedidoRepository;
 
     public List<Pedido> findAll(){
         return pedidoRepository.findAll();
@@ -42,4 +46,9 @@ public class PedidoService {
         updatedPedido.setInsumo(pedido.getInsumo());
         updatedPedido.setProdutos(pedido.getProdutos());
     }
+
+    public Long countByPedidoCliente(Long idCliente){
+        return pedidoRepository.buscarPedidoPorCliente(idCliente);
+    }
+
 }

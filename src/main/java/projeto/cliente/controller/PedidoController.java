@@ -51,5 +51,18 @@ public class PedidoController {
         return ResponseEntity.noContent().build();
     }
 
+    /*@GetMapping(value = "/clientsearch")
+    public ResponseEntity<List<Pedido>> countByCliente(@RequestParam(value = "cliente", defaultValue = "") Long idCliente){
+        List<Pedido> list = pedidoService.countByPedidoCliente(idCliente);
+        return ResponseEntity.ok().body(list);
+
+    }*/
+
+    @GetMapping(value ="/clientsearch")
+    public ResponseEntity<Long> countByPedidoCliente(@RequestParam(value = "cliente", defaultValue = "") Long id){
+        Long pedido = pedidoService.countByPedidoCliente(id);
+        return ResponseEntity.ok().body(pedido);
+    }
+
 
 }
