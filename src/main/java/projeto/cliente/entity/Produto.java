@@ -22,7 +22,11 @@ public class Produto implements Serializable {
     private MultipartFile foto;
 =======
     private String urlFoto;
+<<<<<<< HEAD
 >>>>>>> develop
+=======
+    private Integer tipo;
+>>>>>>> PDD-5_CrudProdutos
 
     public Produto(){}
 
