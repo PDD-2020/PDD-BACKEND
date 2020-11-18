@@ -21,6 +21,7 @@ public class Produto implements Serializable {
     private Double valor;
     private String descricao;
     private String urlFoto;
+    private Integer tipo;
 
     public Produto(){}
 
