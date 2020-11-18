@@ -19,19 +19,9 @@ public class Produto implements Serializable {
     private String nome;
     private Double valor;
     private String descricao;
-<<<<<<< HEAD
     private Number tipo;
-=======
-<<<<<<< HEAD
     private MultipartFile foto;
-=======
     private String urlFoto;
-<<<<<<< HEAD
->>>>>>> develop
-=======
-    private Integer tipo;
->>>>>>> PDD-5_CrudProdutos
->>>>>>> develop
 
     public Produto(){}
 
