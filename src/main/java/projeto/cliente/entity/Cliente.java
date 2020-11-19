@@ -1,27 +1,25 @@
 package projeto.cliente.entity;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Data
-@Getter
-@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @NotNull(message = "cliente is required")
 @Document(collection = "cliente")
-public class Cliente {
 
-    @Transient
-    public static final String SEQUENCE_NAME = "cliente_sequence";
+public class Cliente implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
-    private long id;
+    private String id;
 
     @NotBlank(message = "Nome é obrigatório")
     private String name;
@@ -34,7 +32,4 @@ public class Cliente {
 
     private String email;
 
-    public Cliente() {
-
-    }
 }

@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.stereotype.Service;
 import projeto.cliente.dao.ClienteDAO;
 import projeto.cliente.entity.Cliente;
+import projeto.cliente.exception.ObjectNotFoundException;
 import projeto.cliente.repository.ClienteRepository;
 
 import java.util.ArrayList;
@@ -20,37 +21,29 @@ public class ClienteService {
     @Setter
     private Integer length = 0;
 
-    private final ClienteRepository repository;
+    private final ClienteRepository clienteRepository;
     private final ClienteDAO clienteDAO;
-    private final SequenceGeneratorService serviceId;
 
-
-    public List<Cliente> get(Long id) {
-        if (Objects.isNull(id)) {
-            return this.repository.findAll();
-        } else {
-            List<Cliente> clientes = new ArrayList<>();
-            clientes.add(this.repository.findById(id).orElse(new Cliente()));
-
-            if (clientes.get(0).getId() == 0) {
-                clientes.clear();
-            }
-            return clientes;
-        }
+    public List<Cliente> findAll(){
+        return clienteRepository.findAll();
     }
 
-    public String create(Cliente cliente) {
-        cliente.setId(serviceId.generateSequence(Cliente.SEQUENCE_NAME));
-        this.repository.save(cliente);
-        return "Cliente incluído com sucesso.";
+
+    public Cliente findById(String id){
+        return clienteRepository.findById(id).orElseThrow(()-> new ObjectNotFoundException("Cliente não encontrado"));
+    }
+
+    public Cliente create(Cliente cliente) {
+        return clienteRepository.insert(cliente);
     }
 
     public String updateAge(Long id, Cliente cliente) {
         return this.clienteDAO.updateCliente(id, cliente);
     }
 
-    public void delete(Long id) {
-        this.repository.deleteById(id);
+    public void delete(String id) {
+        findById(id);
+        clienteRepository.deleteById(id);
     }
 
 }
