@@ -44,7 +44,7 @@ public class PedidoService {
 
     public Pedido insert(Pedido pedido){
         pedido.setId(null);
-        //pedido.setCliente(clienteService.get(pedido.getCliente().getId()));
+        pedido.setCliente(clienteService.findById(pedido.getCliente().getId()));
         pedido = pedidoRepository.insert(pedido);
         emailService.enviarAvisoPromocao(pedido);
         return pedido;
@@ -63,8 +63,8 @@ public class PedidoService {
 
     private void updateData(Pedido updatedPedido, Pedido pedido) {
         updatedPedido.setCliente(pedido.getCliente());
-        updatedPedido.setInsumo(pedido.getInsumo());
         updatedPedido.setProdutos(pedido.getProdutos());
+        updatedPedido.setTipoInsumo(pedido.getTipoInsumo());
     }
 
     public Long countPedidoByCliente(Long idClente){
