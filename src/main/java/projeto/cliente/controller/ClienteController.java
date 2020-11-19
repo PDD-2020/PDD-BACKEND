@@ -1,11 +1,15 @@
 package projeto.cliente.controller;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import projeto.cliente.entity.Cliente;
+import projeto.cliente.entity.Pedido;
 import projeto.cliente.service.ClienteService;
 
 import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 
 @RestController()
@@ -20,14 +24,21 @@ public class ClienteController {
     }
 
     @GetMapping
-    public List<Cliente> get(@RequestParam(required = false) Long id) {
-        return this.service.get(id);
+    public List<Cliente> findAll() {
+        return service.findAll();
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public String create(@Valid @RequestBody Cliente cliente) {
-        return this.service.create(cliente);
+    public ResponseEntity<Void> insert(@RequestBody Cliente cliente){
+        Cliente obj = service.create(cliente);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
+    @GetMapping(value ="/{id}")
+    public ResponseEntity<Cliente> findById(@PathVariable String id){
+        Cliente cliente = service.findById(id);
+        return ResponseEntity.ok().body(cliente);
     }
 
     @PutMapping("/{id}")
@@ -36,9 +47,10 @@ public class ClienteController {
         return this.service.updateAge(id, cliente);
     }
 
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public void delete(@PathVariable Long id) {
-        this.service.delete(id);
+    @DeleteMapping(value ="/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Void> delete(@PathVariable String id){
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
