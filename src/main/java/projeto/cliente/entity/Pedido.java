@@ -22,10 +22,18 @@ public class Pedido implements Serializable {
 
     @Id
     private String id;
-    @DBRef()
+    @DBRef
     private Cliente cliente;
     @DBRef
     private Insumo insumo;
     @DBRef
     private List<Produto> produtos = new ArrayList<>();
+
+    public String toString(){
+        StringBuilder builder = new StringBuilder();
+        builder.append("Olá, " + getCliente().getEmail());
+        builder.append("! Você completou 10 pedidos. Favor entrar em contato para solicitar seu prato extra.");
+        return builder.toString();
+    }
+
 }

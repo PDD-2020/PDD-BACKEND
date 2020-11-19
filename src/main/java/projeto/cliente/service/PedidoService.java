@@ -26,6 +26,12 @@ public class PedidoService {
     @Autowired
     private PedidoRepository pedidoRepository;
 
+    @Autowired
+    private ClienteService clienteService;
+
+    @Autowired
+    private EmailService emailService;
+
     private Logger LOG = LoggerFactory.getLogger(PedidoService.class);
 
     public List<Pedido> findAll(){
@@ -37,7 +43,11 @@ public class PedidoService {
     }
 
     public Pedido insert(Pedido pedido){
-        return pedidoRepository.insert(pedido);
+        pedido.setId(null);
+        //pedido.setCliente(clienteService.get(pedido.getCliente().getId()));
+        pedido = pedidoRepository.insert(pedido);
+        emailService.enviarAvisoPromocao(pedido);
+        return pedido;
     }
 
     public void delete(String id){
@@ -62,7 +72,6 @@ public class PedidoService {
 
         if (quantidadePedidoByCliente % 10 == 0){
             LOG.info("Este cliente completou 10 pedidos.");
-            //updateFidelidade(idClente);
         }
         return quantidadePedidoByCliente;
     }
