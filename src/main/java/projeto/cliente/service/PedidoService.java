@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -14,6 +17,7 @@ import projeto.cliente.exception.ObjectNotFoundException;
 import projeto.cliente.repository.ClienteRepository;
 import projeto.cliente.repository.PedidoRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,7 +37,6 @@ public class PedidoService {
     }
 
     public Pedido insert(Pedido pedido){
-        pedido.setFidelidade(false);
         return pedidoRepository.insert(pedido);
     }
 
@@ -52,24 +55,16 @@ public class PedidoService {
         updatedPedido.setCliente(pedido.getCliente());
         updatedPedido.setInsumo(pedido.getInsumo());
         updatedPedido.setProdutos(pedido.getProdutos());
-        updatedPedido.setFidelidade(false);
     }
 
     public Long countPedidoByCliente(Long idClente){
         Long quantidadePedidoByCliente = pedidoRepository.countPedidoByCliente(idClente);
 
-        Query query = new Query(Criteria.where("cliente.id").is(idClente));
-
-        if (quantidadePedidoByCliente == 2){
-            Update u = Update.update("fidelidade", "false").set("fidelidade", "true");
-            //updateFidelidade(idClente);
+        if (quantidadePedidoByCliente % 10 == 0){
             LOG.info("Este cliente completou 10 pedidos.");
+            //updateFidelidade(idClente);
         }
         return quantidadePedidoByCliente;
-
     }
 
-    private Long updateFidelidade(Long idCliente){
-        return pedidoRepository.updateFidelidade(idCliente);
-    }
 }
