@@ -1,23 +1,13 @@
 package projeto.cliente.service;
 
-import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
-import projeto.cliente.entity.Cliente;
 import projeto.cliente.entity.Pedido;
 import projeto.cliente.exception.ObjectNotFoundException;
-import projeto.cliente.repository.ClienteRepository;
 import projeto.cliente.repository.PedidoRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -46,7 +36,13 @@ public class PedidoService {
         pedido.setId(null);
         pedido.setCliente(clienteService.findById(pedido.getCliente().getId()));
         pedido = pedidoRepository.insert(pedido);
-        emailService.enviarAvisoPromocao(pedido);
+
+        Double quantidadePedidoByCliente = countPedidoByCliente(pedido.getCliente().getId());
+        LOG.info(String.valueOf(quantidadePedidoByCliente));
+        if (quantidadePedidoByCliente % 10 == 0){
+            emailService.enviarAvisoPromocao(pedido);
+        }
+
         return pedido;
     }
 
@@ -67,13 +63,8 @@ public class PedidoService {
         updatedPedido.setTipoInsumo(pedido.getTipoInsumo());
     }
 
-    public Long countPedidoByCliente(Long idClente){
-        Long quantidadePedidoByCliente = pedidoRepository.countPedidoByCliente(idClente);
-
-        if (quantidadePedidoByCliente % 10 == 0){
-            LOG.info("Este cliente completou 10 pedidos.");
-        }
-        return quantidadePedidoByCliente;
+    public Double countPedidoByCliente(String idClente){
+        return pedidoRepository.countPedidoByCliente(idClente);
     }
 
 }

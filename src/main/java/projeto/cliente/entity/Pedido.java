@@ -30,9 +30,9 @@ public class Pedido implements Serializable {
 
     public String toString(){
         StringBuilder builder = new StringBuilder();
-        builder.append("Olá, " + getCliente().getEmail());
+        builder.append("Olá, " + getCliente().getName());
         builder.append("! Você completou 10 pedidos. Favor entrar em contato para solicitar seu prato extra.");
         return builder.toString();
     }
-
+    
 }

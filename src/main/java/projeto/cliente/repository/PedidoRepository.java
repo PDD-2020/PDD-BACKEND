@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface PedidoRepository extends MongoRepository<Pedido, String> {
 
-    @Query(value = "{'cliente.$id':?0}", count = true)
-    Long countPedidoByCliente(Long idCliente);
+    @Query(value = "{'cliente.$id':{$eq:ObjectId('?0')}}", count = true)
+    Double countPedidoByCliente(String idCliente);
 }

@@ -51,8 +51,8 @@ public class PedidoController {
     }
 
     @GetMapping(value ="/buscaporcliente")
-    public ResponseEntity<Long> countPedidoByCliente(@RequestParam(value = "cliente", defaultValue = "") Long id){
-        Long quantidadePedidoByCliente = pedidoService.countPedidoByCliente(id);
+    public ResponseEntity<Double> countPedidoByCliente(@RequestParam(value = "cliente", defaultValue = "") String id){
+        Double quantidadePedidoByCliente = pedidoService.countPedidoByCliente(id);
         return ResponseEntity.ok().body(quantidadePedidoByCliente);
     }
 
